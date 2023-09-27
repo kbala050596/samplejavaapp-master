@@ -4,7 +4,7 @@ pipeline {
     stage('compile') {
       steps {
         git 'https://github.com/lerndevops/samplejavaapp.git'
-        sh '/opt/apache-maven-3.9.4/bin/mvn compile'
+        sh '/opt/apache-maven-3.6.3/bin/mvn compile'
         sleep 10
       }
     }
@@ -17,7 +17,7 @@ pipeline {
 
       }
       steps {
-        sh '/opt/apache-maven-3.9.4/bin/mvn -P metrics pmd:pmd'
+        sh '/opt/apache-maven-3.6.3/bin/mvn -P metrics pmd:pmd'
       }
     }
 
@@ -29,7 +29,7 @@ pipeline {
 
       }
       steps {
-        sh '/opt/apache-maven-3.9.4/bin/mvn test'
+        sh '/opt/apache-maven-3.6.3/bin/mvn test'
       }
     }
 
@@ -41,13 +41,13 @@ pipeline {
 
       }
       steps {
-        sh '/opt/apache-maven-3.9.4/bin/mvn cobertura:cobertura -Dcobertura.report.format=xml'
+        sh '/opt/apache-maven-3.6.3/bin/mvn cobertura:cobertura -Dcobertura.report.format=xml'
       }
     }
 
     stage('package') {
       steps {
-        sh '/opt/apache-maven-3.9.4/bin/mvn clean package'
+        sh '/opt/apache-maven-3.6.3/bin/mvn clean package'
       }
     }
 
